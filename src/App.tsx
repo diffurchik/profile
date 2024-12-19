@@ -5,6 +5,7 @@ function App() {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
+
         const handleScroll = () => {
             if (window.scrollY > 10) {
                 setScrolled(true);
