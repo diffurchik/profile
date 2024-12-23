@@ -1,0 +1,38 @@
+$transition: all 0.3s ease;
+$background: #333;
+
+span {
+  display: inline-block;
+  position: relative;
+  margin-right: 5px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 0;
+    top: 0;
+    left: 0;
+    transition: $transition;
+    z-index: -5;
+  }
+
+  @for $i from 1 through 10 {
+    .share:hover > h1 > span:nth-child(#{$i}) {
+      $delay: 100 * $i;
+      $random: ($i * 5) - 30;
+
+      &::after {
+        background: white;
+        width: 100%;
+        transition: $transition;
+        transition-delay: $delay + ms;
+        transform: rotate($random + deg);
+      }
+
+      color: $background;
+      transition-delay: (110 * $i) + ms;
+    }
+  }
+}
+

@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bowlby+One+SC&family=Luckiest+Guy&family=Sigmar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Diplomata&family=Fascinate+Inline&family=Fredericka+the+Great&family=Londrina+Shadow&display=swap');
 
 #root {
     max-width: 1280px;
     /*margin: 0 auto;*/
     padding: 2rem;
     text-align: center;
+    font-family: 'Meta', 'Fascinate Inline','"Fascinate Inline"', 'Fredericka the Great', "Diplomata", "Londrina Shadow", sans-serif;
 }
 
 header {
@@ -52,12 +54,12 @@ header {
 .grid {
     position: absolute;
     inset: 0;
-    height: 100%;
     width: 100%;
+    height: 300vh;
     background-image: linear-gradient(to right, #80808012 1px, transparent 1px),
     linear-gradient(to bottom, #80808012 1px, transparent 1px);
     background-size: 40px 40px;
-    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 100%);
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
 }
 
 
@@ -68,43 +70,67 @@ header {
     font-weight: normal;
 }
 
+/*.caption {*/
+/*    transition: all 1s;*/
+/*    position: fixed;*/
+/*    top: 200px;*/
+/*    left: 200px;*/
+/*    transform: rotate(-0.07turn);*/
+/*    font-variation-settings: "wght" 900, "ital" 1;*/
+/*    line-height: 1;*/
+/*    font-size: 11rem;*/
+/*    text-align: center;*/
+/*    color: transparent;*/
+/*    font-family: "Meta", sans-serif;*/
+/*    text-shadow: 1px 20px 0px #a3e4d7,*/
+/*    22px 20px 0px #f9e79f;*/
+/*    cursor: pointer;*/
+/*}*/
+
 .caption {
+    height: 100%;
+    width: 100%;
     transition: all 1s;
     position: fixed;
-    top: 200px;
-    left: 200px;
-    transform: rotate(-0.07turn);
+    top: 160px;
+    letter-spacing: .8rem;
+    /*left: 200px;*/
+    /*transform: rotate(-0.07turn);*/
     font-variation-settings: "wght" 900, "ital" 1;
     line-height: 1;
-    font-size: 11rem;
+    font-size: 20rem;
     text-align: center;
     color: transparent;
-    font-family: "Meta", sans-serif;
-    text-shadow: 1px 20px 0px #a3e4d7,
-    22px 20px 0px #f9e79f;
-    cursor: pointer;
+    font-family: "Londrina Shadow", sans-serif;
+    text-shadow: 1px 20px 0 #a3e4d7,
+    22px 20px 0 #f9e79f;
+    /*13px 20px 13px #7fb3d5;*/
 }
 
 .caption.scrolled {
+    /*font-family: "Meta", sans-serif;*/
     font-variation-settings: "wght" 100, "ital" 0;
     text-shadow: none;
     -webkit-text-stroke: 4px #a3e4d7;
 }
 
 .photo {
-    opacity: 1;
-    visibility: visible;
+    opacity: 0;
+    visibility: hidden;
     transition: opacity 0.5s ease-in-out, visibility 0s;
     position: fixed;
-    bottom: 300px;
-    right: 400px;
+    bottom: 100px;
+    right: 100px;
     max-width: 400px;
 }
 
 .photo-mask {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 3s ease-in-out, visibility 3s;
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 97%, rgba(0, 0, 0, 0) 100%);
-    bottom: 300px;
-    right: 300px;
+    bottom: 100px;
+    right: 100px;
 }
 
 .scroll-button a {

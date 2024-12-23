@@ -1,8 +1,20 @@
 import './App.css'
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
+import {MePage} from "./Pages/Me.tsx";
+import {Contacts} from "./Pages/Contacts.tsx";
 
 function App() {
-    const [scrolled, setScrolled] = useState(false);
+    const [scrolled, setScrolled] = useState<boolean>(false);
+    const [showSecondPage, setShowSecondPage] = useState<boolean>(false);
+    const [showContactsPage, setShowContactsPage] = useState<boolean>(false);
+    const captionRef = useRef<HTMLDivElement>(null);
+
+    const changeOpacity = useCallback((opacity: number, zIndex: number) => {
+        if (captionRef.current) {
+            captionRef.current.style.opacity = opacity.toString();
+            captionRef.current.style.zIndex = zIndex.toString();
+        }
+    }, [])
 
     useEffect(() => {
         const handleScroll = () => {
@@ -10,6 +22,22 @@ function App() {
                 setScrolled(true);
             } else {
                 setScrolled(false);
+            }
+            if (window.scrollY > 300) {
+                setShowSecondPage(true);
+            } else {
+                setShowSecondPage(false);
+            }
+            if(window.scrollY > 600){
+                setShowContactsPage(true);
+            } else {
+                setShowContactsPage(false);
+            }
+            if (window.scrollY < 350) {
+                changeOpacity(1, 10)
+            }
+            if (window.scrollY > 310) {
+                changeOpacity(0, -1)
             }
         };
 
@@ -32,22 +60,14 @@ function App() {
                 </nav>
             </header>
             <div className={'container'}>
-                <div className={`caption ${scrolled ? "scrolled" : ""}`}>
+                <div ref={captionRef} className={`caption ${scrolled ? "scrolled" : ""}`}>
                     {scrolled ? (<>I am <br/>Anna</>) : (<>
-                        Hello, <br/>
-                        world!
+                        Hello, <br/> world!
                     </>)}
                 </div>
-                <div>
-                    <img src={scrolled ? 'cartoon_photo.png' : 'icon.png'}
-                         className={`photo ${scrolled ? 'photo-mask' : ''}`} alt={'photo of Anna'}/>
-                </div>
-                {/*<div className={'scroll-button'}>*/}
-                {/*    <a href=""><span></span>Scroll</a>*/}
-                {/*</div>*/}
             </div>
-            <div style={{height: "120vh", padding: "20px"}}>
-            </div>
+            {showSecondPage && <MePage/>}
+            {showContactsPage && <Contacts/>}
         </div>
     )
 }
