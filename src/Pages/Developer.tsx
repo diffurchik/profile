@@ -14,7 +14,8 @@ export const Developer: React.FC<Props> = ({positionTop}: Props) => {
             position: 'absolute',
             top: positionTop,
             left: 0,
-            width: '100%'
+            width: '100%',
+            color: '#2c3e50'
         }}>
             <li>ex-Fronted Engineer in Miro</li>
             <li>SDET</li>

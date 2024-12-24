@@ -28,7 +28,7 @@ function App() {
             } else {
                 setShowSecondPage(false);
             }
-            if(window.scrollY > 600){
+            if(window.scrollY > 500){
                 setShowContactsPage(true);
             } else {
                 setShowContactsPage(false);

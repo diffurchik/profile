@@ -1,12 +1,11 @@
 import styles from './me.module.css'
-import {useCallback, useEffect, useLayoutEffect, useRef, useState} from "react";
+import {useCallback, useRef, useState} from "react";
 import {Developer} from "./Developer.tsx";
 import {QA} from "./QA.tsx";
 
 export const MePage: React.FC = () => {
     const [showQaSection, setShowQaSection] = useState<boolean>(false)
     const [showDevSection, setShowDevSection] = useState<boolean>(false)
-    const [topValue, setTopValue] = useState<number>(0);
     const containerRef = useRef<HTMLDivElement | null>(null);
 
     const showQaSectionHandler = useCallback(() => {
@@ -28,14 +27,6 @@ export const MePage: React.FC = () => {
         setShowQaSection(false);
         setShowDevSection(false);
     }, [])
-
-    useLayoutEffect(() => {
-        if (containerRef.current) {
-            const containerHeight = containerRef.current.offsetHeight;
-            setTopValue(-containerHeight * 0.5);
-        }
-    }, []);
-
 
     return (
         <div style={{position: 'absolute', top: '65vh', left: 0, width: '100%'}} onClick={hideQaSectionHandler}>
