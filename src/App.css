@@ -6,13 +6,12 @@
     /*margin: 0 auto;*/
     padding: 2rem;
     text-align: center;
+    scroll-behavior: smooth;
     font-family: 'Meta', 'Fascinate Inline','"Fascinate Inline"', 'Fredericka the Great', "Diplomata", "Londrina Shadow", sans-serif;
+    cursor: none;
 }
 
-header {
-    color: white;
-    padding: 10px 0;
-    text-align: center;
+.menu {
     position: fixed;
     top: 5%;
     left: 50%;
@@ -24,7 +23,8 @@ header {
     display: flex;
     justify-content: center;
     margin: 0;
-    padding: 0;
+    padding: 10px 0;
+    text-align: center;
 }
 
 .menu ul li {
@@ -39,6 +39,7 @@ header {
 
 .menu ul li:hover {
     transform: scale(1.2);
+    /*cursor: pointer;*/
 }
 
 .container {
@@ -55,7 +56,7 @@ header {
     position: absolute;
     inset: 0;
     width: 100%;
-    height: 180vh;
+    height: 200vh;
     background-image: linear-gradient(to right, #80808012 1px, transparent 1px),
     linear-gradient(to bottom, #80808012 1px, transparent 1px);
     background-size: 40px 40px;
@@ -70,21 +71,24 @@ header {
     font-weight: normal;
 }
 
-/*.caption {*/
-/*    transition: all 1s;*/
+/*#cursor {*/
 /*    position: fixed;*/
-/*    top: 200px;*/
-/*    left: 200px;*/
-/*    transform: rotate(-0.07turn);*/
-/*    font-variation-settings: "wght" 900, "ital" 1;*/
-/*    line-height: 1;*/
-/*    font-size: 11rem;*/
-/*    text-align: center;*/
-/*    color: transparent;*/
-/*    font-family: "Meta", sans-serif;*/
-/*    text-shadow: 1px 20px 0px #a3e4d7,*/
-/*    22px 20px 0px #f9e79f;*/
-/*    cursor: pointer;*/
+/*    top: calc(var(--cursor-size) * -0.5);*/
+/*    left:  calc(var(--cursor-size) * -0.5);*/
+/*    pointer-events: none;*/
+/*    mix-blend-mode: difference;*/
+/*    filter: url(#goo);*/
+/*}*/
+
+/*.cursor-circle {*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: var(--cursor-size);*/
+/*    height: var(--cursor-size);*/
+/*    border-radius: var(--cursor-size);*/
+/*    background: var(--bg);*/
+/*    transform-origin: center center;*/
 /*}*/
 
 .caption {
@@ -133,25 +137,75 @@ header {
     right: 100px;
 }
 
-.scroll-button a {
-    padding-top: 60px;
-}
+/*.scroll-button a {*/
+/*    padding-top: 60px;*/
+/*}*/
 
-.scroll-button a span {
-    position: absolute;
-    /*top: 0;*/
-    left: 50%;
-    width: 24px;
-    height: 24px;
-    margin-left: -12px;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    -webkit-animation: sdb04 2s infinite;
-    animation: sdb04 2s infinite;
-    box-sizing: border-box;
-}
+/*.scroll-button a span {*/
+/*    position: absolute;*/
+/*    !*top: 0;*!*/
+/*    left: 50%;*/
+/*    width: 24px;*/
+/*    height: 24px;*/
+/*    margin-left: -12px;*/
+/*    border-left: 1px solid black;*/
+/*    border-bottom: 1px solid black;*/
+/*    -webkit-transform: rotate(-45deg);*/
+/*    transform: rotate(-45deg);*/
+/*    -webkit-animation: sdb04 2s infinite;*/
+/*    animation: sdb04 2s infinite;*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+/*.gooey-cursor-wrapper {*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    pointer-events: none;*/
+/*    z-index: 10000;*/
+/*}*/
+
+/*.gooey-cursor {*/
+/*    position: absolute;*/
+/*    width: 15px;*/
+/*    height: 15px;*/
+/*    background: #61dafb;*/
+/*    border-radius: 50%;*/
+/*    pointer-events: none;*/
+/*    transform: translate(-50%, -50%);*/
+/*    filter: url(#gooey);*/
+/*    animation: trail 0.3s ease-out;*/
+/*}*/
+
+/*.gooey-blobs {*/
+/*    position: absolute;*/
+/*    width: 50px;*/
+/*    height: 50px;*/
+/*    background: #61dafb;*/
+/*    border-radius: 50%;*/
+/*    pointer-events: none;*/
+/*    filter: url(#gooey);*/
+/*    animation: follow 0.5s ease-out;*/
+/*    opacity: 0.7;*/
+/*}*/
+
+/*@keyframes trail {*/
+/*    0% {*/
+/*        transform: translate(-50%, -50%) scale(1.5);*/
+/*    }*/
+/*    100% {*/
+/*        transform: translate(-50%, -50%) scale(1);*/
+/*    }*/
+/*}*/
+
+/*@keyframes follow {*/
+/*    0% {*/
+/*        transform: translate(-50%, -50%) scale(0.5);*/
+/*    }*/
+/*    100% {*/
+/*        transform: translate(-50%, -50%) scale(1);*/
+/*    }*/
+/*}*/
 
 @-webkit-keyframes sdb04 {
     0% {

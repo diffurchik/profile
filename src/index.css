@@ -12,6 +12,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --black: #222;
+  --columns: 15;
+  --cursor-blend-mode: difference;
+  --color-bg: #f2f1eb;
+  --cursor-radius: 0;
+  --cursor-bg: #f3d006;
 }
 
 a {
@@ -44,7 +49,7 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
-  cursor: pointer;
+  /*cursor: pointer;*/
   transition: border-color 0.25s;
 }
 button:hover {
@@ -66,4 +71,29 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+#cursor {
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 99;
+  mix-blend-mode: var(--cursor-blend-mode);
+  --size: calc(100vw / var(--columns));
+}
+
+.cursor__inner {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), var(--size));
+}
+
+.cursor__inner-box {
+  width: var(--size);
+  height: var(--size);
+  background: var(--cursor-bg);
+  opacity: 0;
+  border-radius: var(--cursor-radius);
 }

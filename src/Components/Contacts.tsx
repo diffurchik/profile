@@ -31,6 +31,14 @@ export const Contacts: React.FC = () => {
                         <p>annabogoluybova@gmail.com</p>
                     </div>
                 </a>
+                <a href="https://github.com/diffurchik" target="_blank" rel="noopener noreferrer"
+                   className={styles.cardLink}>
+                    <div className={styles.card}>
+                        <img className={styles.image} src={'github.png'} alt={'LinkedIn logo'}/>
+                        <h3>Github</h3>
+                        <p>diffurchik</p>
+                    </div>
+                </a>
             </div>
         </div>
     )

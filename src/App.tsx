@@ -1,7 +1,9 @@
 import './App.css'
 import {useCallback, useEffect, useRef, useState} from "react";
-import {MePage} from "./Pages/Me.tsx";
-import {Contacts} from "./Pages/Contacts.tsx";
+import {Link, Element} from 'react-scroll';
+import {MePage} from "./Components/Me.tsx";
+import {Contacts} from "./Components/Contacts.tsx";
+import GooeyCursor from "./Components/GooeyCursor.tsx";
 
 function App() {
     const [scrolled, setScrolled] = useState<boolean>(false);
@@ -28,7 +30,7 @@ function App() {
             } else {
                 setShowSecondPage(false);
             }
-            if(window.scrollY > 500){
+            if (window.scrollY > 500) {
                 setShowContactsPage(true);
             } else {
                 setShowContactsPage(false);
@@ -51,23 +53,34 @@ function App() {
     return (
         <div className={'grid'}>
             <header>
-                <nav className="menu">
+                <nav className="menu" style={{zIndex: 1000}}>
                     <ul>
-                        <li><a href="#home">/ Home</a></li>
-                        <li><a href="#about">/ About</a></li>
-                        <li><a href="#contact">/ Contact</a></li>
+                        <li><Link to="home" smooth duration={500}>/ Home</Link></li>
+                        <li><Link to="about" smooth duration={500} offset={-600}>/ About</Link></li>
+                        <li><Link to="contact" smooth duration={500}>/ Contact</Link></li>
                     </ul>
                 </nav>
             </header>
-            <div className={'container'}>
-                <div ref={captionRef} className={`caption ${scrolled ? "scrolled" : ""}`}>
-                    {scrolled ? (<>I am <br/>Anna</>) : (<>
-                        Hello, <br/> world!
-                    </>)}
+            <Element name="home">
+                <div className={'container'}>
+                    <div ref={captionRef} className={`caption ${scrolled ? "scrolled" : ""}`}>
+                        {scrolled ? (<>I am <br/>Anna</>) : (<>
+                            Hello, <br/> world!
+                        </>)}
+                    </div>
                 </div>
-            </div>
-            {showSecondPage && <MePage/>}
-            {showContactsPage && <Contacts/>}
+            </Element>
+            <Element name="about">
+                <div style={{display: showSecondPage ? "block" : "none"}} id='about'>
+                    <MePage/>
+                </div>
+            </Element>
+            <Element name="contact" id={'contact'}>
+                <div style={{display: showContactsPage ? "block" : "none"}}>
+                    <Contacts/>
+                </div>
+            </Element>
+            <GooeyCursor />
         </div>
     )
 }

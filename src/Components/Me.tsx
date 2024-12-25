@@ -31,31 +31,23 @@ export const MePage: React.FC = () => {
     return (
         <div style={{position: 'absolute', top: '65vh', left: 0, width: '100%'}} onClick={hideQaSectionHandler}>
             <section className={styles.container} ref={containerRef}>
-                <div style={{flex: 1, position: 'relative', marginLeft: 100}}>
+                <div style={{flex: 1, position: 'relative'}}>
                     <img src={'photo_2.png'} alt={'photo of Anna'}
-                         style={{position: 'absolute', top: -190, left: 0,}}
+                         style={{position: 'absolute', top: -190, right: 0,}}
                          className={showQaSection ? styles.image_visible : styles.image_hidden}/>
-                    {showDevSection && <Developer positionTop={-50}/>}
+                    {showDevSection && <Developer positionTop={-160}/>}
                 </div>
                 <div style={{flex: 1}}>
                     <h1 onMouseEnter={showQaSectionHandler} onMouseLeave={hideQaSectionHandler}
-                        className={styles.paragraph}><span>Q</span><span>A</span></h1>
-                    <h1 className={styles.paragraph} onMouseEnter={showDevSectionHandler}
-                        onMouseLeave={hideDevSectionHandler}><span>D</span>
-                        <span>e</span>
-                        <span>v</span>
-                        <span>e</span>
-                        <span>l</span>
-                        <span>o</span>
-                        <span>p</span>
-                        <span>e</span>
-                        <span>r</span></h1>
+                        className={styles.paragraph}><span>QA</span></h1>
+                    <h1 onMouseEnter={showDevSectionHandler} onMouseLeave={hideDevSectionHandler}
+                        className={styles.paragraph}><span>Developer</span></h1>
                 </div>
-                <div style={{flex: 1, position: 'relative', marginRight: 100}}>
+                <div style={{flex: 1, position: 'relative'}}>
                     <img src={'icon_5.png'} alt={'photo of Anna'}
                          style={{position: 'absolute', top: -200, left: 0}}
                          className={showDevSection ? styles.image_visible : styles.image_hidden}/>
-                    {showQaSection && <QA positionTop={-50}/>}
+                    {showQaSection && <QA positionTop={-190}/>}
                 </div>
 
             </section>

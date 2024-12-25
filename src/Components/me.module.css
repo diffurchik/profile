@@ -2,17 +2,12 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 170px;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.6);
-    /*border: 1px solid lightgray;*/
-    /*margin: 10px;*/
     height: 500px;
-    margin: 0 80px 0 80px
 }
 
 .paragraph {
-    /*width: 100%;*/
     transition: all 0.5s ease-in-out;
     z-index: 100;
     color: #85929e;
@@ -34,7 +29,7 @@
 }
 
 .paragraph:hover {
-    cursor: pointer;
+    /*cursor: pointer;*/
     transform: scale(1.2);
     color: #f9e79f;
     animation: none;
@@ -43,7 +38,7 @@
 
 .image_hidden {
     max-width: 300px;
-    /*visibility: hidden;*/
+    visibility: hidden;
     transition: opacity 0.5s ease-in-out;
     opacity: 0;
     pointer-events: none;
@@ -51,7 +46,6 @@
 
 .image_visible {
     max-width: 300px;
-    /*visibility: visible;*/
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 93%, rgba(0, 0, 0, 0) 100%);
