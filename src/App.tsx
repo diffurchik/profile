@@ -76,7 +76,7 @@ function App() {
                 </div>
             </Element>
             <Element name="contact" id={'contact'}>
-                <div style={{display: showContactsPage ? "block" : "none"}}>
+                <div style={{opacity: showContactsPage ? 1 : 0, transition: 'opacity 1s ease-in-out', visibility: showContactsPage ? "visible" : "hidden"}}>
                     <Contacts/>
                 </div>
             </Element>

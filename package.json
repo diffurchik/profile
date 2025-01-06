@@ -1,5 +1,6 @@
 {
   "name": "my-profile",
+  "homepage": "https://diffurchik.github.io/profile/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +9,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "predeploy" : "npm run build"
   },
   "dependencies": {
     "gh-pages": "^6.2.0",
