@@ -35,8 +35,8 @@ function App() {
 
             if(isMobile){
                 console.log(currentScroll);
-                setScrolled(currentScroll > 5);
-                setShowSecondPage(currentScroll > 10);
+                setScrolled(currentScroll > 25);
+                setShowSecondPage(currentScroll > 125);
                 setShowContactsPage(currentScroll > 200);
             } else {
                 setScrolled(currentScroll > 10);
