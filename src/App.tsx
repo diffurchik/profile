@@ -10,6 +10,7 @@ function App() {
     const [showSecondPage, setShowSecondPage] = useState<boolean>(false);
     const [showContactsPage, setShowContactsPage] = useState<boolean>(false);
     const captionRef = useRef<HTMLDivElement>(null);
+    const [isMobile, setIsMobile] = useState(false);
 
     const changeOpacity = useCallback((opacity: number, zIndex: number) => {
         if (captionRef.current) {
@@ -19,36 +20,45 @@ function App() {
     }, [])
 
     useEffect(() => {
+
+        const mediaQuery = window.matchMedia("(max-width: 768px)");
+        setIsMobile(mediaQuery.matches);
+
+        const handleMediaChange = (event: MediaQueryListEvent) => {
+            setIsMobile(event.matches);
+        };
+
+        console.log(isMobile);
+
         const handleScroll = () => {
-            if (window.scrollY > 10) {
-                setScrolled(true);
+            const currentScroll = window.scrollY;
+
+            if(isMobile){
+                console.log(currentScroll);
+                setScrolled(currentScroll > 5);
+                setShowSecondPage(currentScroll > 10);
+                setShowContactsPage(currentScroll > 200);
             } else {
-                setScrolled(false);
+                setScrolled(currentScroll > 10);
+                setShowSecondPage(currentScroll > 300);
+                setShowContactsPage(currentScroll > 500);
             }
-            if (window.scrollY > 300) {
-                setShowSecondPage(true);
-            } else {
-                setShowSecondPage(false);
-            }
-            if (window.scrollY > 500) {
-                setShowContactsPage(true);
-            } else {
-                setShowContactsPage(false);
-            }
-            if (window.scrollY < 350) {
+
+            if (currentScroll < 350) {
                 changeOpacity(1, 10)
             }
-            if (window.scrollY > 310) {
+            if (currentScroll > 310) {
                 changeOpacity(0, -1)
             }
         };
 
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: false });
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
+            mediaQuery.removeEventListener("change", handleMediaChange)
         };
-    }, []);
+    }, [isMobile]);
 
     return (
         <div className={'grid'}>
