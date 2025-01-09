@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import "./GooeyCursor.css";
+import "./styles/GooeyCursor.css";
 
 const GooeyCursor: React.FC = () => {
     const cursorRef = useRef<HTMLDivElement>(null);

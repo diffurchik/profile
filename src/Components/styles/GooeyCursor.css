@@ -29,3 +29,14 @@ svg {
 svg defs filter {
     filter: url(#gooey);
 }
+
+@media (max-width: 768px) {
+    svg {
+        display: block;
+    }
+
+    .cursor,
+    .cursor-follower {
+        display: none;
+    }
+}

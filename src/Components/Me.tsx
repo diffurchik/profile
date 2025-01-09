@@ -1,4 +1,4 @@
-import styles from './me.module.css'
+import styles from './styles/me.module.css'
 import {useCallback, useRef, useState} from "react";
 import {Developer} from "./Developer.tsx";
 import {QA} from "./QA.tsx";

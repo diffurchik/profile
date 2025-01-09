@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.paragraph {
+    transition: all 0.5s ease-in-out;
+    z-index: 100;
+    color: #85929e;
+    -webkit-animation: pulsate 3s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    text-decoration-thickness: 1px;
+}
+
+@-webkit-keyframes pulsate {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1.0;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.paragraph:hover {
+    /*cursor: pointer;*/
+    /*transform: scale(1.2);*/
+    color: #f9e79f;
+    animation: none;
+}

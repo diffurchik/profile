@@ -4,6 +4,7 @@ import {Link, Element} from 'react-scroll';
 import {MePage} from "./Components/Me.tsx";
 import {Contacts} from "./Components/Contacts.tsx";
 import GooeyCursor from "./Components/GooeyCursor.tsx";
+import {MeMobilePage} from "./Components/MeMobile.tsx";
 
 function App() {
     const [scrolled, setScrolled] = useState<boolean>(false);
@@ -28,16 +29,13 @@ function App() {
             setIsMobile(event.matches);
         };
 
-        console.log(isMobile);
-
         const handleScroll = () => {
             const currentScroll = window.scrollY;
 
             if(isMobile){
-                console.log(currentScroll);
                 setScrolled(currentScroll > 25);
-                setShowSecondPage(currentScroll > 125);
-                setShowContactsPage(currentScroll > 200);
+                setShowSecondPage(currentScroll > 120);
+                setShowContactsPage(currentScroll > 300);
             } else {
                 setScrolled(currentScroll > 10);
                 setShowSecondPage(currentScroll > 300);
@@ -48,6 +46,10 @@ function App() {
                 changeOpacity(1, 10)
             }
             if (currentScroll > 310) {
+                changeOpacity(0, -1)
+            }
+
+            if(isMobile && currentScroll > 150){
                 changeOpacity(0, -1)
             }
         };
@@ -71,6 +73,11 @@ function App() {
                     </ul>
                 </nav>
             </header>
+            { isMobile && <div className="scroll-indicator">
+                <span className="dot"></span>
+                <span className="dot"></span>
+                <span className="dot"></span>
+            </div>}
             <Element name="home">
                 <div className={'container'}>
                     <div ref={captionRef} className={`caption ${scrolled ? "scrolled" : ""}`}>
@@ -82,15 +89,19 @@ function App() {
             </Element>
             <Element name="about">
                 <div style={{display: showSecondPage ? "block" : "none"}} id='about'>
-                    <MePage/>
+                    {isMobile ? <MeMobilePage/> : <MePage/>}
                 </div>
             </Element>
             <Element name="contact" id={'contact'}>
-                <div style={{opacity: showContactsPage ? 1 : 0, transition: 'opacity 1s ease-in-out', visibility: showContactsPage ? "visible" : "hidden"}}>
+                <div style={{
+                    opacity: showContactsPage ? 1 : 0,
+                    transition: 'opacity 1s ease-in-out',
+                    visibility: showContactsPage ? "visible" : "hidden"
+                }}>
                     <Contacts/>
                 </div>
             </Element>
-            <GooeyCursor />
+            <GooeyCursor/>
         </div>
     )
 }
