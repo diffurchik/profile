@@ -12,6 +12,11 @@ function App() {
     const [showContactsPage, setShowContactsPage] = useState<boolean>(false);
     const captionRef = useRef<HTMLDivElement>(null);
     const [isMobile, setIsMobile] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = useCallback(() => {
+        setIsMenuOpen((prev) => !prev);
+    }, [])
 
     const changeOpacity = useCallback((opacity: number, zIndex: number) => {
         if (captionRef.current) {
@@ -32,7 +37,7 @@ function App() {
         const handleScroll = () => {
             const currentScroll = window.scrollY;
 
-            if(isMobile){
+            if (isMobile) {
                 setScrolled(currentScroll > 25);
                 setShowSecondPage(currentScroll > 120);
                 setShowContactsPage(currentScroll > 300);
@@ -49,31 +54,36 @@ function App() {
                 changeOpacity(0, -1)
             }
 
-            if(isMobile && currentScroll > 150){
+            if (isMobile && currentScroll > 150) {
                 changeOpacity(0, -1)
             }
         };
 
-        window.addEventListener("scroll", handleScroll, { passive: false });
+        window.addEventListener("scroll", handleScroll, {passive: false});
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
             mediaQuery.removeEventListener("change", handleMediaChange)
         };
-    }, [isMobile]);
+    }, [isMobile, changeOpacity]);
 
     return (
         <div className={'grid'}>
             <header>
-                <nav className="menu" style={{zIndex: 1000}}>
-                    <ul>
+                <nav className={`menu ${isMenuOpen ? "open" : ""}`} style={{zIndex: 1000}}>
+                    <button className="hamburger" onClick={toggleMenu}>
+                        <span className="bar" id='bar1'></span>
+                        <span className="bar" id='bar2'></span>
+                        <span className="bar" id='bar3'></span>
+                    </button>
+                    <ul className={`${isMenuOpen ? "visible" : ""}`}>
                         <li><Link to="home" smooth duration={500}>/ Home</Link></li>
                         <li><Link to="about" smooth duration={500} offset={-600}>/ About</Link></li>
                         <li><Link to="contact" smooth duration={500}>/ Contact</Link></li>
                     </ul>
                 </nav>
             </header>
-            { isMobile && <div className="scroll-indicator">
+            {isMobile && <div className="scroll-indicator">
                 <span className="dot"></span>
                 <span className="dot"></span>
                 <span className="dot"></span>

@@ -31,6 +31,10 @@
     transition: all 0.5s;
 }
 
+.menu ul.visible {
+    display: flex;
+}
+
 .menu ul li a {
     color: dimgray;
     font-size: 18px;
@@ -38,7 +42,14 @@
 
 .menu ul li:hover {
     transform: scale(1.2);
-    /*cursor: pointer;*/
+}
+
+#bar1 {
+    transform: translateY(-4px);
+}
+
+#bar3 {
+    transform: translateY(4px);
 }
 
 .container {
@@ -135,6 +146,47 @@
     }
 }
 
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    position: absolute;
+    right: -160px;
+    top: 30px;
+}
+
+.hamburger .bar {
+    width: 100%;
+    height: 3px;
+    background-color: rgb(248, 196, 113, 0.8);
+    border-radius: 30%;
+}
+
+#bar1 {
+    transform: translateY(-4px);
+}
+
+#bar3 {
+    transform: translateY(4px);
+}
+
+.open #bar1 {
+    transform: translateY(6px) rotateZ(-45deg) scale(1.2, 1);
+}
+
+.open #bar2 {
+    opacity: 0;
+}
+
+.open #bar3 {
+    transform: translateY(-10px) rotateZ(45deg) scale(1.2, 1)
+}
+
+
 @media (max-width: 768px) {
 
     #root {
@@ -164,7 +216,32 @@
     }
 
     .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        z-index: 1000;
+    }
+
+    .menu ul {
         display: none;
+        position: absolute;
+        top: 60px;
+        right: -180px;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin: 0;
+        padding: 20px 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .menu ul .visible {
+        /*display: flex;*/
     }
 
     /** {*/
@@ -180,7 +257,7 @@
     justify-content: center;
     gap: 8px;
     position: absolute;
-    top: -220px;
+    top: -250px;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
@@ -220,7 +297,7 @@
     }
 
     50% {
-        opacity: 0.8;
+        opacity: 0.9;
         transform: scale(0.7);
     }
 
