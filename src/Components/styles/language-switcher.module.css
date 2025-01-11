@@ -74,11 +74,11 @@
 
     p {
         display: none;
-    }
+    };
 
     .chevron {
         display: none;
-    }
+    };
 
     .menu_container {
         top: 30px;

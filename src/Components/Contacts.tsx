@@ -35,8 +35,8 @@ export const Contacts: React.FC = () => {
                     <div className={styles.card}>
                         <img className={styles.image} src={'linkedIn.png'} alt={'LinkedIn logo'}/>
                         <h3>LinkedIn</h3>
-                        <p onClick={handleCopy}
-                           style={{textDecoration: isMobile ? "underline" : "none"}}>www.linkedin.com/in/diffurchik</p>
+                        <div onClick={handleCopy} className={styles.paragraph}
+                           style={{textDecoration: isMobile ? "underline" : "none"}}>www.linkedin.com/in/diffurchik</div>
                     </div>
                 </a>
                 <a href="https://t.me/diffurchik" target="_blank" rel="noopener noreferrer"
@@ -44,7 +44,7 @@ export const Contacts: React.FC = () => {
                     <div className={styles.card}>
                         <img className={styles.image} src={'telegram.png'} alt={'LinkedIn logo'}/>
                         <h3>Telegram</h3>
-                        <p>@diffurchik</p>
+                        <div  className={styles.paragraph}>@diffurchik</div>
                     </div>
                 </a>
                 <a href="mailto:example@example.com" target="_blank" rel="noopener noreferrer"
@@ -52,8 +52,8 @@ export const Contacts: React.FC = () => {
                     <div className={styles.card}>
                         <img className={styles.image} src={'email.png'} alt={'LinkedIn logo'}/>
                         <h3>Email</h3>
-                        <p onClick={handleCopy}
-                           style={{textDecoration: isMobile ? "underline" : "none"}}>annabogoluybova@gmail.com</p>
+                        <div onClick={handleCopy} className={styles.paragraph}
+                           style={{textDecoration: isMobile ? "underline" : "none"}}>annabogoluybova@gmail.com</div>
                     </div>
                 </a>
                 <a href="https://github.com/diffurchik" target="_blank" rel="noopener noreferrer"
@@ -61,7 +61,7 @@ export const Contacts: React.FC = () => {
                     <div className={styles.card}>
                         <img className={styles.image} src={'github.png'} alt={'LinkedIn logo'}/>
                         <h3>Github</h3>
-                        <p>diffurchik</p>
+                        <div className={styles.paragraph}>diffurchik</div>
                     </div>
                 </a>
             </div>

@@ -83,9 +83,10 @@
         text-decoration-thickness: 1px;
     }
 
-    .card p{
+    .card .paragraph{
         margin: 0;
         padding: 0 10px 0 10px;
         word-break: break-all;
+        display: block;
     }
 }
