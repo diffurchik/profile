@@ -1,10 +1,13 @@
 import './App.css'
 import {useCallback, useEffect, useRef, useState} from "react";
-import {Link, Element} from 'react-scroll';
+import {Element} from 'react-scroll';
 import {MePage} from "./Components/Me.tsx";
 import {Contacts} from "./Components/Contacts.tsx";
 import GooeyCursor from "./Components/GooeyCursor.tsx";
 import {MeMobilePage} from "./Components/MeMobile.tsx";
+import {LanguageSwitcher} from "./Components/LanguageSwitcher.tsx";
+import {LanguageProvider} from "./Context.tsx";
+import {Menu} from "./Components/Menu.tsx";
 
 function App() {
     const [scrolled, setScrolled] = useState<boolean>(false);
@@ -12,11 +15,7 @@ function App() {
     const [showContactsPage, setShowContactsPage] = useState<boolean>(false);
     const captionRef = useRef<HTMLDivElement>(null);
     const [isMobile, setIsMobile] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const toggleMenu = useCallback(() => {
-        setIsMenuOpen((prev) => !prev);
-    }, [])
 
     const changeOpacity = useCallback((opacity: number, zIndex: number) => {
         if (captionRef.current) {
@@ -69,48 +68,38 @@ function App() {
 
     return (
         <div className={'grid'}>
-            <header>
-                <nav className={`menu ${isMenuOpen ? "open" : ""}`} style={{zIndex: 1000}}>
-                    <button className="hamburger" onClick={toggleMenu}>
-                        <span className="bar" id='bar1'></span>
-                        <span className="bar" id='bar2'></span>
-                        <span className="bar" id='bar3'></span>
-                    </button>
-                    <ul className={`${isMenuOpen ? "visible" : ""}`}>
-                        <li><Link to="home" smooth duration={500}>/ Home</Link></li>
-                        <li><Link to="about" smooth duration={500} offset={-600}>/ About</Link></li>
-                        <li><Link to="contact" smooth duration={500}>/ Contact</Link></li>
-                    </ul>
-                </nav>
-            </header>
-            {isMobile && <div className="scroll-indicator">
-                <span className="dot"></span>
-                <span className="dot"></span>
-                <span className="dot"></span>
-            </div>}
-            <Element name="home">
-                <div className={'container'}>
-                    <div ref={captionRef} className={`caption ${scrolled ? "scrolled" : ""}`}>
-                        {scrolled ? (<>I am <br/>Anna</>) : (<>
-                            Hello, <br/> world!
-                        </>)}
+            <LanguageProvider>
+                <LanguageSwitcher/>
+                <Menu/>
+                {!showSecondPage && <div className="scroll-indicator">
+                    <span className="dot"></span>
+                    <span className="dot"></span>
+                    <span className="dot"></span>
+                </div>}
+                <Element name="home">
+                    <div className={'container'}>
+                        <div ref={captionRef} className={`caption ${scrolled ? "scrolled" : ""}`}>
+                            {scrolled ? (<>I am <br/>Anna</>) : (<>
+                                Hello, <br/> world!
+                            </>)}
+                        </div>
                     </div>
-                </div>
-            </Element>
-            <Element name="about">
-                <div style={{display: showSecondPage ? "block" : "none"}} id='about'>
-                    {isMobile ? <MeMobilePage/> : <MePage/>}
-                </div>
-            </Element>
-            <Element name="contact" id={'contact'}>
-                <div style={{
-                    opacity: showContactsPage ? 1 : 0,
-                    transition: 'opacity 1s ease-in-out',
-                    visibility: showContactsPage ? "visible" : "hidden"
-                }}>
-                    <Contacts/>
-                </div>
-            </Element>
+                </Element>
+                <Element name="about">
+                    <div style={{display: showSecondPage ? "block" : "none"}} id='about'>
+                        {isMobile ? <MeMobilePage/> : <MePage/>}
+                    </div>
+                </Element>
+                <Element name="contact" id={'contact'}>
+                    <div style={{
+                        opacity: showContactsPage ? 1 : 0,
+                        transition: 'opacity 1s ease-in-out',
+                        visibility: showContactsPage ? "visible" : "hidden"
+                    }}>
+                        <Contacts/>
+                    </div>
+                </Element>
+            </LanguageProvider>
             <GooeyCursor/>
         </div>
     )

@@ -11,6 +11,8 @@ export const CustomParagraph = styled.p<{ $positionTop: number}>`
     width: 400px;
 
     @media (max-width: 768px) {
+        right: 0;
+        left: 0;
         margin: 0 10px 0 10px;
         font-size: 16px;
         width: 300px;

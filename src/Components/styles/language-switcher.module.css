@@ -1,0 +1,109 @@
+.button {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 150px ;
+    border: darkslategray solid 1px;
+    border-radius: 20px;
+    position: absolute;
+    top: 40px;
+    right: 80px;
+    transition: 0.3s ease;
+    z-index: 10;
+    opacity: 0.8;
+}
+
+.image {
+    width: 25px;
+    height: 25px;
+}
+
+.button:hover {
+    transform: scale(1.1);
+}
+
+.menu_container {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 8px;
+    position: absolute;
+    top: 90px;
+    right: 80px;
+    z-index: 100;
+}
+
+.menu_container li {
+    padding: 10px;
+    z-index: 100;
+    transition: transform 0.3s ease, color 0.3s ease;
+    list-style: none;
+    color: #34495e;
+}
+
+.menu_container li:hover {
+    transform: scale(1.2);
+}
+
+.language_option.chosen_language {
+    color: #1f618d;
+    list-style-type: circle;
+    transform: scale(1.2);
+    /*text-decoration: underline;*/
+    /*text-decoration-thickness: 1px;*/
+}
+
+@media (max-width: 768px) {
+    .button {
+        top: 30px;
+        height: 40px;
+        width: 50px ;
+        border: none;
+    };
+
+    .image {
+        width: 15px;
+        height: 15px;
+    }
+
+    p {
+        display: none;
+    }
+
+    .chevron {
+        display: none;
+    }
+
+    .menu_container {
+        top: 30px;
+        right: 80px;
+        flex-direction: row; /* Arrange children horizontally */
+        justify-content: start; /* Center elements horizontally */
+        align-items: center; /* Align items vertically */
+        gap: 15px; /* Adjust spacing between items */
+        width: 200px;
+        height: 40px;
+        border: darkslategray solid 1px;
+        border-radius: 20px;
+        z-index: 1;
+        transition: all 1s ease;
+    }
+
+    .menu_container ul {
+        padding-inline-start: 0;
+    }
+
+    .menu_container li {
+        display: inline-block; /* Ensure list items are inline */
+        /*list-style-type: none;*/
+
+        /*padding: 5px; !* Adjust padding for a better mobile fit *!*/
+    }
+}
+

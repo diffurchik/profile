@@ -24,10 +24,10 @@ export const MeMobileModal: React.FC<Props> = ({closeModal, sectionName}: Props)
                 </svg>
             </button>
             <div className={styles.wrapper}>
-                <img src={sectionName === "Developer" ? 'icon_5.png' : "photo_2.png"} alt={'photo of Anna'}
+                <img src={sectionName === "QA" ? "me.png" : 'icon_colored.png' } alt={'photo of Anna'}
                      className={styles.image}/>
-                {sectionName === "Developer" ? <Developer positionTop={200}/> :
-                    <QA positionTop={200}/>}
+                {sectionName === "QA" ? <QA positionTop={200}/> :
+                    <Developer positionTop={200}/>}
             </div>
         </div>
     )

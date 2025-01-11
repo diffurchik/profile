@@ -2,11 +2,16 @@ import styles from './styles/me.module.css'
 import {useCallback, useRef, useState} from "react";
 import {Developer} from "./Developer.tsx";
 import {QA} from "./QA.tsx";
+import {useLanguage} from "../Context.tsx";
+import {translations} from "../Translates.tsx";
 
 export const MePage: React.FC = () => {
     const [showQaSection, setShowQaSection] = useState<boolean>(false)
     const [showDevSection, setShowDevSection] = useState<boolean>(false)
     const containerRef = useRef<HTMLDivElement | null>(null);
+    const {language} = useLanguage();
+
+    const about = translations[language].about;
 
     const showQaSectionHandler = useCallback(() => {
         setShowQaSection(true);
@@ -32,7 +37,7 @@ export const MePage: React.FC = () => {
         <div style={{position: 'absolute', top: '65vh', left: 0, width: '100%'}} onClick={hideQaSectionHandler}>
             <section className={styles.container} ref={containerRef}>
                 <div style={{flex: 1, position: 'relative'}}>
-                    <img src={'photo_2.png'} alt={'photo of Anna'}
+                    <img src={'me.png'} alt={'photo of Anna'}
                          style={{position: 'absolute', top: -190, right: 0,}}
                          className={showQaSection ? styles.image_visible : styles.image_hidden}/>
                     {showDevSection && <Developer positionTop={-160}/>}
@@ -41,10 +46,10 @@ export const MePage: React.FC = () => {
                     <h1 onMouseEnter={showQaSectionHandler} onMouseLeave={hideQaSectionHandler}
                         className={styles.paragraph}><span>QA</span></h1>
                     <h1 onMouseEnter={showDevSectionHandler} onMouseLeave={hideDevSectionHandler}
-                        className={styles.paragraph}><span>Developer</span></h1>
+                        className={styles.paragraph}><span>{about.DEV}</span></h1>
                 </div>
                 <div style={{flex: 1, position: 'relative'}}>
-                    <img src={'icon_5.png'} alt={'photo of Anna'}
+                    <img src={'icon_colored.png'} alt={'photo of Anna'}
                          style={{position: 'absolute', top: -200, left: 0}}
                          className={showDevSection ? styles.image_visible : styles.image_hidden}/>
                     {showQaSection && <QA positionTop={-190}/>}

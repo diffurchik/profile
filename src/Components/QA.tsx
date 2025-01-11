@@ -1,16 +1,25 @@
 import * as React from "react";
 import {CustomParagraph} from "./styles/developerStyles.tsx";
+import {useLanguage} from "../Context.tsx";
+import {translations} from "../Translates.tsx";
+import styles from './styles/about-me-texts.module.css'
+
 
 type Props = {
     positionTop: number
 }
 
 export const QA: React.FC<Props> = ({positionTop}: Props) => {
+    const {language} = useLanguage();
+
+    const texts = translations[language].about.QA_TEXT as string[];
+
     return (
-        <CustomParagraph $positionTop={positionTop} style={{left:0}}>
-            <li>Former Head of QA</li>
-            <li>Passionate about delivering excellent quality efficiently, using modern tools and crafting solutions when none exist.</li>
-            <li>Career highlights include leading QA efforts at a major bank, implementing efficient processes, training manual testers in coding, and raising testing standards.</li>
-            <li>Experienced in manual testing, automation, and process optimization across various industries.</li>
+        <CustomParagraph $positionTop={positionTop} style={{left: 0, display: "block"}}>
+            <div className={styles.scrollableContent}>
+                {texts.map((element: string, index) =>
+                    <li key={index}>{element}</li>
+                )}
+            </div>
         </CustomParagraph>)
 }

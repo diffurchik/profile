@@ -1,0 +1,12 @@
+@media (max-width: 768px) {
+    .scrollableContent {
+        max-height: 250px;
+        overflow-y: auto;
+        padding: 20px;
+        scroll-behavior: smooth;
+    }
+
+    .scrollableContent li:last-child {
+        margin-bottom: 10px;
+    }
+}
