@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     height: 40px;
-    width: 150px ;
+    width: 150px;
     border: darkslategray solid 1px;
     border-radius: 20px;
     position: absolute;
@@ -16,7 +16,13 @@
     opacity: 0.8;
 }
 
-.image {
+.button .chevron {
+    height: 10px;
+    width: 10px;
+    margin-right: 5px;
+}
+
+.button .image {
     width: 25px;
     height: 25px;
 }
@@ -63,30 +69,30 @@
     .button {
         top: 30px;
         height: 40px;
-        width: 50px ;
+        width: 50px;
         border: none;
-    };
-
-    .image {
-        width: 15px;
-        height: 15px;
     }
 
-    p {
-        display: none;
-    };
+    .button .image {
+        width: 20px;
+        height: 20px;
+    }
 
-    .chevron {
+    .button p {
         display: none;
-    };
+    }
+
+    .button .chevron {
+        display: none;
+    }
 
     .menu_container {
         top: 30px;
         right: 80px;
-        flex-direction: row; /* Arrange children horizontally */
-        justify-content: start; /* Center elements horizontally */
-        align-items: center; /* Align items vertically */
-        gap: 15px; /* Adjust spacing between items */
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        gap: 15px;
         width: 200px;
         height: 40px;
         border: darkslategray solid 1px;
@@ -95,15 +101,13 @@
         transition: all 1s ease;
     }
 
-    .menu_container ul {
+    .menu_container .languages_list {
         padding-inline-start: 0;
+        padding-left: 1px;
     }
 
-    .menu_container li {
-        display: inline-block; /* Ensure list items are inline */
-        /*list-style-type: none;*/
-
-        /*padding: 5px; !* Adjust padding for a better mobile fit *!*/
+    .menu_container .language_option {
+        display: inline-block;
     }
 }
 

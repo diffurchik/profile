@@ -32,10 +32,10 @@ export const LanguageSwitcher: React.FC = () => {
         <div className={styles.button} onClick={onMenuClick}>
             <img src={'earth_east.svg'} alt="earth logo to change language" className={styles.image}/>
             <p>Language</p>
-            <img src={'arrow_down.svg'} alt="arrow down" style={{height: 10, width: 10, marginRight: 5, transform: showLanguageMenu? 'rotate(180deg)' : 'rotate(0)'}} className={styles.chevron}/>
+            <img src={'arrow_down.svg'} alt="arrow down" style={{ transform: showLanguageMenu? 'rotate(180deg)' : 'rotate(0)'}} className={styles.chevron}/>
         </div>
         {showLanguageMenu && <div className={styles.menu_container}>
-            <ul>
+            <ul className={styles.languages_list}>
                 <li className={`${styles.language_option} ${language === Languages.EN ? styles.chosen_language : ''}`}
                     onClick={onLanguageChoose}>English
                 </li>
